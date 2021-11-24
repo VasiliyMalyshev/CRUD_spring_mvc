@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:align="center" class="tg">
+  <h2>PHONE BOOK</h2>
+  <br/>
+  <h3><a href="http://localhost:8080/users/new">Add new User</a></h3>
+  <br/>
+  <table th:border="1" th:cellpadding="5">
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>LAST_NAME</th>
+      <th>PHONE_NUMBER</th>
+      <th>EMAIL</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr th:each="user : ${allUsers}">
+      <td th:text="${user.id}">ID</td>
+      <td th:text="${user.name}">NAME</td>
+      <td th:text="${user.lastName}">LAST_NAME</td>
+      <td th:text="${user.phoneNumber}">PHONE_NUMBER</td>
+      <td th:text="${user.email}">EMAIL</td>
+      <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+      <td><a th:href="@{/remove/{id}(id=${user.id})}">Delete</a></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
